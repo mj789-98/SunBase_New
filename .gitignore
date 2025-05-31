@@ -94,3 +94,11 @@ node_modules/
 # Task files
 tasks.json
 tasks/ 
+.cursor/mcp.json
+.cursor/rules/cursor_rules.mdc
+.cursor/rules/dev_workflow.mdc
+.cursor/rules/self_improve.mdc
+.cursor/rules/taskmaster.mdc
+.env.example
+.roo/rules-architect/architect-rules
+.windsurfrules
