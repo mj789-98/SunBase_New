@@ -50,7 +50,6 @@ namespace SunBase.Controllers
         {
             if (likeButton != null)
             {
-                // Customize button color transitions
                 likeButtonColors.normalColor = Color.white;
                 likeButtonColors.highlightedColor = new Color(0.95f, 0.95f, 0.95f);
                 likeButtonColors.pressedColor = new Color(0.85f, 0.85f, 0.85f);
@@ -67,11 +66,15 @@ namespace SunBase.Controllers
         {
             postData = data;
 
-            // Load persisted like state
             if (!string.IsNullOrEmpty(postData.UniqueId))
             {
                 postData.isLiked = LikeStateManager.GetLikeState(postData.UniqueId, postData.isLiked);
                 postData.likes = LikeStateManager.GetLikeCount(postData.UniqueId, postData.likes);
+            }
+
+            if (likeCountText != null)
+            {
+                likeCountText.text = postData.likes.ToString();
             }
 
             UpdateUI();
@@ -84,23 +87,16 @@ namespace SunBase.Controllers
             if (usernameText != null) usernameText.text = postData.username;
             if (contentText != null) contentText.text = postData.content;
             
-            // Animate like count change
             if (likeCountText != null)
             {
-                int currentCount = int.Parse(likeCountText.text);
-                if (currentCount != postData.likes)
-                {
-                    StartCoroutine(UIAnimationManager.AnimateLikeCount(likeCountText, currentCount, postData.likes));
-                }
+                likeCountText.text = postData.likes.ToString();
             }
 
-            // Animate like button color
             if (likeButtonImage != null)
             {
-                StartCoroutine(UIAnimationManager.TransitionColor(likeButtonImage, postData.isLiked ? likedColor : unlikedColor));
+                likeButtonImage.color = postData.isLiked ? likedColor : unlikedColor;
             }
             
-            // Update comment count if available
             if (commentCountText != null && postData.comments != null)
             {
                 commentCountText.text = postData.comments.Length.ToString();
@@ -111,14 +107,11 @@ namespace SunBase.Controllers
         {
             if (postData == null) return;
 
-            // Animate button click
             StartCoroutine(UIAnimationManager.AnimateButtonClick(likeButton.transform));
 
-            // Toggle like state
             postData.isLiked = !postData.isLiked;
             postData.likes += postData.isLiked ? 1 : -1;
 
-            // Persist the like state
             if (!string.IsNullOrEmpty(postData.UniqueId))
             {
                 LikeStateManager.SaveLikeState(postData.UniqueId, postData.isLiked, postData.likes);
@@ -131,7 +124,6 @@ namespace SunBase.Controllers
         {
             if (postData == null || commentPanel == null) return;
 
-            // Animate button click
             StartCoroutine(UIAnimationManager.AnimateButtonClick(commentButton.transform));
 
             commentPanel.ShowComments(postData.content, postData.comments);
