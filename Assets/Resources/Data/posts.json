@@ -1,0 +1,52 @@
+{
+    "posts": [
+        {
+            "username": "Unity Developer",
+            "profilePic": "profile_unity",
+            "content": "Just launched my new game on the App Store! Check it out! 🎮 #UnityDev #GameDevelopment",
+            "likes": 156,
+            "isLiked": false,
+            "timestamp": "1 hour ago",
+            "comments": [
+                "Congratulations! 🎉",
+                "Downloading now!"
+            ]
+        },
+        {
+            "username": "Art Director",
+            "profilePic": "profile_art",
+            "content": "Here's a sneak peek of our new character designs! What do you think? 🎨 #GameArt #ConceptArt",
+            "likes": 289,
+            "isLiked": true,
+            "timestamp": "3 hours ago",
+            "comments": [
+                "Amazing work!",
+                "Love the style!"
+            ]
+        },
+        {
+            "username": "Game Designer",
+            "profilePic": "profile_design",
+            "content": "Working on some exciting new game mechanics. Can't wait to share more details! 🕹️ #GameDesign",
+            "likes": 92,
+            "isLiked": false,
+            "timestamp": "5 hours ago",
+            "comments": [
+                "Looking forward to it!",
+                "Keep us posted!"
+            ]
+        },
+        {
+            "username": "QA Tester",
+            "profilePic": "profile_qa",
+            "content": "Found and fixed 50 bugs today! Making the game better one bug at a time. 🐛 #QualityAssurance",
+            "likes": 73,
+            "isLiked": false,
+            "timestamp": "1 day ago",
+            "comments": [
+                "Great job!",
+                "The hero we need!"
+            ]
+        }
+    ]
+} 

@@ -1,0 +1,307 @@
+# Product Requirements Document
+## Unity Social Post Viewer
+
+---
+
+### **1. Project Overview**
+
+**Project Title:** Simple Social Post Viewer  
+**Project Type:** Unity UI Application  
+**Target Platform:** Unity 2021+ Desktop Application  
+**Development Time:** 24 hours (estimated)  
+**Complexity Level:** Beginner-Intermediate
+
+---
+
+### **2. Objective & Purpose**
+
+Create a basic Unity UI application that simulates a social media-style post interface using dummy data. This project serves as a technical assessment to evaluate:
+- Unity UI system proficiency
+- Basic C# scripting capabilities
+- User interaction handling
+- UI/UX design understanding
+
+---
+
+### **3. Core Requirements**
+
+#### **3.1 Mandatory Features**
+
+##### **3.1.1 Social Media Post Display**
+- **User Interface Framework:** Unity Canvas-based UI system
+- **Post Components Required:**
+  - **User Name:** Text component displaying poster's name
+  - **Profile Picture:** Image component with placeholder avatar
+  - **Post Content:** Text area with dummy social media content
+  - **Like Button:** Interactive button with toggle functionality
+
+##### **3.1.2 Interactive Elements**
+- **Like Button Functionality:**
+  - Toggle between "liked" and "unliked" states
+  - Visual state changes (color, icon, or appearance modification)
+  - Optional like counter with real-time increment/decrement
+
+##### **3.1.3 Data Management**
+- **Data Source Options:**
+  - Hardcoded dummy values within scripts
+  - Local JSON file integration
+  - ScriptableObject implementation
+- **Required Data Structure:**
+  ```json
+  {
+    "username": "John Doe",
+    "profilePic": "profile1.png", 
+    "content": "This is my first post!",
+    "likes": 10
+  }
+  ```
+
+---
+
+### **4. Technical Specifications**
+
+#### **4.1 Development Environment**
+- **Unity Version:** 2021.x or newer
+- **Programming Language:** C#
+- **UI Framework:** Unity UI (uGUI)
+- **Third-party Dependencies:** None for core features
+
+#### **4.2 Required Unity Components**
+- Canvas (Screen Space - Overlay recommended)
+- Image components for profile pictures and backgrounds
+- Text components for username and post content
+- Button components for interactions
+- Layout Groups for proper alignment
+- Content Size Fitter for responsive design
+
+#### **4.3 Scripting Requirements**
+- Post data model/class structure
+- UI controller scripts for button interactions
+- State management for like functionality
+- Optional: JSON parsing utilities
+
+---
+
+### **5. Bonus Features (Optional)**
+
+#### **5.1 Priority Level 1 (High Impact)**
+- **Multiple Posts Display:**
+  - Implement Scroll View component
+  - Vertical layout with multiple post instances
+  - Dynamic post generation from data array
+
+#### **5.2 Priority Level 2 (Medium Impact)**
+- **Comment System:**
+  - Comment button integration
+  - Panel/popup display for comments
+  - Dummy comment data structure
+  - Basic comment UI layout
+
+#### **5.3 Priority Level 3 (Enhancement)**
+- **Data Persistence:**
+  - PlayerPrefs integration for like states
+  - Session-based data retention
+  - User preference storage
+
+- **Dynamic Data Loading:**
+  - JSON file parsing at runtime
+  - Flexible data structure handling
+  - Error handling for missing files
+
+#### **5.4 Priority Level 4 (Polish)**
+- **UI Animations:**
+  - Panel fade in/out transitions
+  - Button click feedback effects
+  - Smooth state change animations
+  - Optional: Spring animations or tweening
+
+---
+
+### **6. User Experience Requirements**
+
+#### **6.1 Visual Design**
+- Clean, modern social media aesthetic
+- Consistent color scheme and typography
+- Responsive layout that adapts to different screen sizes
+- Clear visual hierarchy
+
+#### **6.2 Interaction Design**
+- Intuitive button placement and sizing
+- Immediate visual feedback for all interactions
+- Smooth transitions between states
+- Accessible touch targets (minimum 44px for mobile considerations)
+
+#### **6.3 Performance Requirements**
+- Stable 60 FPS on target hardware
+- Minimal memory footprint
+- Fast UI response times (< 100ms for button presses)
+- Efficient rendering for multiple posts (if implemented)
+
+---
+
+### **7. Data Structure Specifications**
+
+#### **7.1 Post Data Model**
+```csharp
+[System.Serializable]
+public class PostData
+{
+    public string username;
+    public string profilePic;
+    public string content;
+    public int likes;
+    public bool isLiked;
+    public string[] comments; // Optional for bonus feature
+    public string timestamp; // Optional enhancement
+}
+```
+
+#### **7.2 JSON Data Format**
+```json
+{
+  "posts": [
+    {
+      "username": "John Doe",
+      "profilePic": "profile1.png",
+      "content": "This is my first post!",
+      "likes": 10,
+      "isLiked": false,
+      "comments": ["Great post!", "Thanks for sharing!"]
+    }
+  ]
+}
+```
+
+---
+
+### **8. File Structure & Organization**
+
+```
+Assets/
+├── Scripts/
+│   ├── PostData.cs
+│   ├── PostController.cs
+│   ├── SocialFeedManager.cs
+│   └── JSONLoader.cs (optional)
+├── UI/
+│   ├── PostPrefab.prefab
+│   └── SocialFeedCanvas.prefab
+├── Resources/
+│   ├── Images/
+│   │   └── profile_placeholder.png
+│   └── Data/
+│       └── posts.json (optional)
+└── Scenes/
+    └── SocialFeedScene.unity
+```
+
+---
+
+### **9. Testing & Quality Assurance**
+
+#### **9.1 Functional Testing**
+- Like button toggle functionality
+- UI element display correctness
+- Data loading verification
+- Multiple interaction testing
+
+#### **9.2 UI/UX Testing**
+- Visual consistency across different resolutions
+- Button responsiveness and feedback
+- Text readability and layout
+- Overall user experience flow
+
+#### **9.3 Performance Testing**
+- Frame rate stability
+- Memory usage monitoring
+- UI element rendering efficiency
+
+---
+
+### **10. Deliverables**
+
+#### **10.1 Required Submissions**
+1. **Complete Unity Project:**
+   - Zipped Unity project folder, OR
+   - GitHub repository with proper version control
+
+2. **Visual Documentation:**
+   - 1-2 high-quality screenshots of working UI
+   - Screenshots should demonstrate core functionality
+
+3. **Optional Documentation:**
+   - README file explaining implementation
+   - Brief development notes and learnings
+   - Known issues or limitations
+
+#### **10.2 Submission Format**
+- **File Naming:** `[YourName]_SocialPostViewer_Unity.zip`
+- **Repository Naming:** `unity-social-post-viewer`
+- **Documentation:** Markdown format preferred
+
+---
+
+### **11. Evaluation Criteria**
+
+#### **11.1 Technical Implementation (40%)**
+- Code quality and organization
+- Proper Unity UI component usage
+- Script functionality and logic
+- Error handling and edge cases
+
+#### **11.2 User Interface Design (30%)**
+- Visual appeal and consistency
+- Layout and spacing
+- User experience flow
+- Responsive design considerations
+
+#### **11.3 Functionality (20%)**
+- Core feature completeness
+- Interaction responsiveness
+- Data handling accuracy
+- Bonus feature implementation quality
+
+#### **11.4 Documentation & Presentation (10%)**
+- Code comments and clarity
+- Submission organization
+- Screenshot quality
+- README documentation (if provided)
+
+---
+
+### **12. Timeline & Milestones**
+
+#### **Phase 1: Setup & Basic UI (6-8 hours)**
+- Unity project setup
+- Basic canvas and UI layout
+- Static post display implementation
+
+#### **Phase 2: Core Functionality (8-10 hours)**
+- Like button interaction
+- State management
+- Data structure implementation
+
+#### **Phase 3: Enhancement & Polish (6-8 hours)**
+- Bonus features (if time permits)
+- UI refinement and testing
+- Documentation and submission preparation
+
+---
+
+### **13. Success Metrics**
+
+#### **13.1 Minimum Viable Product**
+- Single post displays correctly
+- Like button functions properly
+- Clean, presentable UI
+- Code compiles without errors
+
+#### **13.2 Stretch Goals**
+- Multiple posts with scroll functionality
+- Persistent like states
+- Smooth animations and transitions
+- Dynamic data loading from JSON
+
+---
+
+*This PRD serves as a comprehensive guide for implementing the Unity Social Post Viewer project, covering all requirements from basic functionality to advanced bonus features.*
